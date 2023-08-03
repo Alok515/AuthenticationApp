@@ -1,5 +1,6 @@
 const User = require('../models/user');
 const bcrypt = require('bcryptjs');
+const logmail = require('../mailers/sendmail');
 
 const home = (req, res) => {
     res.render('../views/home.ejs', {
@@ -83,7 +84,8 @@ const profile = (req, res) => {
     })
 }
 
-const logoutGet = (req, res) => {
+const logoutGet = async(req, res) => {
+    await logmail.sendMailer(req.user);
     req.logout((err) => {
         if(!err){
             req.flash('success_msg', 'logout successfully');
