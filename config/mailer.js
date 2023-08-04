@@ -1,14 +1,15 @@
 const nodeMailer = require('nodemailer');
 const ejs = require('ejs');
+const path = require('path');
 
 let transpoter = nodeMailer.createTransport({
     service: 'mailgun',
     host: 'smtp.mailgun.org',
     port: 587,
-    secure: false,
+    secure: true,
     auth: {
-        user: 'postmaster@sandboxfd0debbbc90646a79f7f4b8bc7a5999d.mailgun.org',
-        pass: 'Krishna'
+        user: process.env.email,
+        pass: process.env.passEmail
     }
 });
 

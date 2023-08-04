@@ -1,4 +1,5 @@
-const { loginGet, registerGet, registerPost, logoutGet} = require('../controller/handler');
+const isAuth = require('../config/auth');
+const { loginGet, registerGet, registerPost, logoutGet, getMail} = require('../controller/handler');
 const router = require('express').Router();
 const passport = require('passport');
 
@@ -15,5 +16,6 @@ router.route('/google/callback').get(passport.authenticate('google', {
 }));
 router.route('/register').get(registerGet).post(registerPost);
 router.route('/logout').get(logoutGet);
+router.route('/sendmail').get(isAuth, getMail);
 
 module.exports = router;

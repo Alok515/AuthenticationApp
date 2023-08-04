@@ -85,7 +85,6 @@ const profile = (req, res) => {
 }
 
 const logoutGet = async(req, res) => {
-    await logmail.sendMailer(req.user);
     req.logout((err) => {
         if(!err){
             req.flash('success_msg', 'logout successfully');
@@ -94,6 +93,14 @@ const logoutGet = async(req, res) => {
     });
 }
 
+const getMail = async(req, res) => {
+    let mail = await logmail.sendMailer(req.user);
+        console.log("mail sent");
+        req.flash('success_msg', 'Mail sent successfully');
+        return res.redirect('back');
+}
+
+    
 module.exports = {
     home,
     loginGet,
@@ -101,4 +108,5 @@ module.exports = {
     registerPost,
     profile,
     logoutGet,
+    getMail
 }
