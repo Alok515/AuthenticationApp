@@ -78,6 +78,7 @@ const registerPost = (req, res) => {
 }
 
 const profile = (req, res) => {
+    req.flash('success_msg', 'Login successful');
     res.render('profile', {
         title: 'Profile',
         user: req.user,

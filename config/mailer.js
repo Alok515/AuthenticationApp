@@ -13,11 +13,13 @@ let transpoter = nodeMailer.createTransport({
     }
 });
 
-let renderTemplate = (data, renderPath) => {
+let renderTemplate = (link, renderPath) => {
     let mailHtml;
     ejs.renderFile(
         path.join(__dirname, '../views/mailers', renderPath),
-        data,
+        {
+            link,
+        },
         (err, template) => {
             if (err) {console.log('Error in Rendering mailers: ' + err); return}
             mailHtml = template;

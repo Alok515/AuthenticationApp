@@ -1,12 +1,12 @@
 const nodeMailer = require('../config/mailer');
 
-exports.sendMailer = (user) => {
+exports.sendMailer = (email, link) => {
     
-    let htm = nodeMailer.renderTemplate(user, '/reset.ejs');
+    let htm = nodeMailer.renderTemplate(link,  '/reset.ejs');
     nodeMailer.transpoter.sendMail({
         from: process.env.email,
-        to: user.email,
-        subject: 'Test Of the NodeMailer',
+        to: email,
+        subject: 'Reset Password',
         html: htm,
     },(err, info) =>{
         if (err) {
