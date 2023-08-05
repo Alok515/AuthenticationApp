@@ -29,7 +29,7 @@ const registerPost = (req, res) => {
     if( password !== password2){
         errors.push({ msg: 'Password does not match' }); 
     }
-    if( password.length < 6){
+    if( password.length < 2){
         errors.push({ msg: 'Password must be at least 6 characters' });
     }
     if( errors.length > 0){
@@ -47,7 +47,7 @@ const registerPost = (req, res) => {
                 if(user){
                     errors.push({ msg: 'User is already registered' });
                     res.render('register', {
-                        error,
+                        errors,
                         name,
                         email,
                         password,

@@ -4,9 +4,12 @@ const Token = require('../models/token');
 const { sendMailer } = require('../mailers/sendmail');
 const bcrypt = require('bcryptjs');
 
+
 const setPass = async (req, res) => {
     try {
-        const user = await User.findOne({ email: req.user.email });
+        let emailTemp = req.body.email;
+        if (emailTemp === undefined) emailTemp = req.user.email;
+        const user = await User.findOne({ email: emailTemp});
         if (!user) {
             req.flash('error_msg', 'User not found with that email address Please try again or register if not registered');
             return res.redirect('back');
@@ -20,6 +23,7 @@ const setPass = async (req, res) => {
         }
         const link = `http://localhost:8000/users/password-reset/${user._id}/${token.token}`;
         sendMailer(user.email, link);
+
         req.flash('success_msg', 'Password link sent successfully');
         res.redirect('back');
     } catch (error) {
@@ -73,8 +77,14 @@ const getPassHandler = (req, res) => {
     })
 }
 
+const forgetPassReset = (req, res) => {
+    return res.render('../views/forgetpass.ejs', {
+        title: 'Forget Password Reset'
+    });
+}
 module.exports = {
     setPass,
     resetPass,
     getPassHandler,
+    forgetPassReset,
 }

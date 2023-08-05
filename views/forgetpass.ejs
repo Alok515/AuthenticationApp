@@ -1,0 +1,22 @@
+
+<div class="row mt-5">
+    <div class="col-md-6 m-auto">
+        <div class="card card-body">
+            <h5 class="text-center mb-3">Enter your <b>Email Address</b> to send Password Reset Link</h5>
+            <form method="post" action="/users/sendmail" style="margin: 0 auto;">
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input
+                        type="email"
+                        id="email"
+                        name="email"
+                        class="form-control mb-3"
+                        placeholder="email address"
+                        required
+                    />
+                </div>
+                <button type="submit" class="btn btn-primary mt-3">Submit</button>
+            </form>            
+        </div>
+    </div>
+</div>

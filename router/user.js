@@ -1,9 +1,9 @@
-const { set } = require('mongoose');
+
 const isAuth = require('../config/auth');
 const { loginGet, registerGet, registerPost, logoutGet, getMail} = require('../controller/handler');
 const router = require('express').Router();
 const passport = require('passport');
-const { setPass, getPassHandler, resetPass } = require('../controller/passwordHandle');
+const { setPass, getPassHandler, resetPass, forgetPassReset } = require('../controller/passwordHandle');
 
 router.route('/login').get(loginGet).post( passport.authenticate('local', {
     successRedirect: '/profile',
@@ -18,7 +18,8 @@ router.route('/google/callback').get(passport.authenticate('google', {
 }));
 router.route('/register').get(registerGet).post(registerPost);
 router.route('/logout').get(logoutGet);
-router.route('/sendmail').get(isAuth, setPass);
+router.route('/forgetpass').get(forgetPassReset);
+router.route('/sendmail').get(isAuth, setPass).post( setPass);
 router.route('/password-reset/:userId/:token').get(getPassHandler).post(resetPass);
 
 module.exports = router;
