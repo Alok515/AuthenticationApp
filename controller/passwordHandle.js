@@ -72,9 +72,9 @@ const resetPass = async (req, res) => {
 }
 
 const getPassHandler = (req, res) => {
-    return res.render('../views/resetpass.ejs', {
-        name: req.user.name,
-    })
+    return res.render('../views/resetpassword.ejs', {
+        title: 'Reset Password',
+    });
 }
 
 const forgetPassReset = (req, res) => {
