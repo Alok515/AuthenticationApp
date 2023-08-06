@@ -1,4 +1,4 @@
-const { home, profile, postMail} = require('../controller/handler');
+const { home, profile } = require('../controller/handler');
 const router = require('express').Router();
 const { isAuth } = require('../config/auth');
 
