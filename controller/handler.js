@@ -2,27 +2,32 @@ const User = require('../models/user');
 const bcrypt = require('bcryptjs');
 const logmail = require('../mailers/sendmail');
 
+//render the home page
 const home = (req, res) => {
     res.render('../views/home.ejs', {
         title : 'Home',
     });
 }
 
+//renders the Login page
 const loginGet = (req, res) => {
     res.render('../views/login.ejs', {
         title : 'Login',
     });
 }
 
+//render the Register page
 const registerGet = (req, res) => {
     res.render('../views/register.ejs', {
         title : 'Register',
     });
 }
 
+//register the user Handler
 const registerPost = (req, res) => {
     const { name, email, password, password2} = req.body;
     const errors = [];
+    //validating the form data
     if( !name || !email || !password || !password2){
         errors.push({ msg: 'All field are required'});
     }
@@ -42,6 +47,7 @@ const registerPost = (req, res) => {
         });
     }
     else {
+        //finds the user from database using email
         User.findOne({ email: email})
             .then((user) => {
                 if(user){
@@ -55,12 +61,14 @@ const registerPost = (req, res) => {
                     });
                 }
                 else {
+                    //hasing the password with bcrypt
                     bcrypt.genSalt(10, (err, salt) => {
                         bcrypt.hash(password, salt, (err, hash) => {
                             if (err){
                                 console.log(err);
                                 return;
                             }
+                            //saving the user to the database
                             User.create({ email: email, password: hash, name: name})
                                 .then((user) => {
                                     if (user){
@@ -77,6 +85,7 @@ const registerPost = (req, res) => {
     }
 }
 
+//renders the profile page
 const profile = (req, res) => {
     req.flash('success_msg', 'Login successful');
 
@@ -86,6 +95,7 @@ const profile = (req, res) => {
     })
 }
 
+//logout handler
 const logoutGet = async(req, res) => {
     req.logout((err) => {
         if(!err){
@@ -95,6 +105,7 @@ const logoutGet = async(req, res) => {
     });
 }
 
+//mailer function to send mail
 const getMail = async(req, res) => {
     let mail = await logmail.sendMailer(req.user);
         console.log("mail sent");
@@ -102,7 +113,6 @@ const getMail = async(req, res) => {
         return res.redirect('back');
 }
 
-    
 module.exports = {
     home,
     loginGet,
