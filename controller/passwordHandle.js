@@ -6,6 +6,7 @@ const bcrypt = require('bcryptjs');
 const queue = require('../config/pallerkue');
 const emailWorker = require('../worker/workerkue');
 
+//passwords link hander function 
 const setPass = async (req, res) => {
     try {
         let emailTemp = req.body.email;

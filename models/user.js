@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
 
+//database schema for the user with name, email and password. It also contains the date
 const userSchema = mongoose.Schema({
     name: {
         type: 'string',

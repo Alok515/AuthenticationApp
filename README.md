@@ -9,7 +9,7 @@
 - [Usage](#usage)
 - [Technologies](#technologies)
 - [Contributing](#contributing)
-- [License](#license)
+
 
 ## Description
 
@@ -40,7 +40,8 @@ cd AuthenticationApp
 
 For Linux (Arch Linux Based Distros)
 ```
-Sudo pacman -S redis
+sudo pacman -S redis
+redis-server
 ```
 For Other Operating Systems (Windows, Mac OS)
 [Visit here](https://redis.io/docs/getting-started/) For Redis Setup
@@ -116,9 +117,3 @@ git push origin feature/your-feature-name
 5. Open a pull request on the main repository, explaining your changes and improvements.
 
 6. Your pull request will be reviewed, and upon approval, it will be merged into the main repository.
-
-## License
-
-This project is licensed under the [MIT License](LICENSE).
-
----

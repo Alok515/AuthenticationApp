@@ -2,6 +2,9 @@ const nodeMailer = require('nodemailer');
 const ejs = require('ejs');
 const path = require('path');
 
+//transpoter to config the mailer
+//transpoter has to be populated with the service provider, host and port
+//user and password
 let transpoter = nodeMailer.createTransport({
     service: 'mailgun',
     host: 'smtp.mailgun.org',
@@ -13,6 +16,7 @@ let transpoter = nodeMailer.createTransport({
     }
 });
 
+//render the Mail Tamplate file with ejs render
 let renderTemplate = (link, renderPath) => {
     let mailHtml;
     ejs.renderFile(

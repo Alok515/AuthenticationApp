@@ -1,5 +1,7 @@
 const mongoose = require('mongoose');
 
+//it helps to validate the link only once
+//model for the token with mages the token for reset password
 const tokenSchema = new mongoose.Schema({
     userId: {
         type: mongoose.Schema.Types.ObjectId,
@@ -10,6 +12,7 @@ const tokenSchema = new mongoose.Schema({
         type: String,
         required: true
     },
+    
     createdAt: {
         type: Date,
         default: Date.now,
