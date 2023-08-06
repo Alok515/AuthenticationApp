@@ -3,7 +3,7 @@
         <div class="card card-body">
             <h1 class="text-center mb-3"><i class="fas fa-sign-in-alt"></i>  Login</h1>
             
-            <form action="/users/login" method="POST">
+            <form action="/users/login" method="POST" id="login-form">
                 <div class="form-group">
                     <label for="email">Email</label>
                     <input
@@ -20,25 +20,38 @@
                         type="password"
                         id="password"
                         name="password"
-                        class="form-control"
+                        class="form-control mb-2"
                         placeholder="Enter Password"
                     />
                 </div>
-                <p class="mt-4">
-                    Forgot Password? <a href="/users/forgetpass">Forgot</a>
+                <input type="checkbox" onclick="showPassword()" style="padding: 10px;">Show Password
+                <p class="mt-4 form-group">
+                    <a href="/users/forgetpass" style="text-decoration: none;">Forgot Password?</a>
                 </p>
-                <button type="submit" class="btn btn-primary btn-block">Login</button>
+                <button type="submit" class="btn btn-primary btn-block g-recaptcha form-control mb-5" data-sitekey="<%= recapKey %>" data-callback="recapSubmit">Login</button>
+                <div class="form-group">
+                    <span class="lead" style="float: left">
+                        Login or Register with <a href="/users/google"><img src="../public/images/google.svg" alt="google" style="width:24px; height: 24px;"></a>
+                    </span>
+                    <span class="lead" style="float: right; ">
+                        No Account? <a href="/users/register" style="text-decoration: none;">Register Here</a>
+                    </span>
+                </div>
             </form>
-            <span>
-                <span class="lead mt-4 pr-6">
-                    Log in With Google <a href="/users/google"><i class="fa fa-google-plus" aria-hidden="true"></i></a>
-                </span>
-                <span class="p-4 m-4"></span>
-                <span class="p-4 m-4"></span>
-                <span class="lead mt-4 pl-6">
-                    No Account? <a href="/users/register">Register</a>
-                </span>
-            </span>
         </div>
     </div>
 </div>
+<script type="text/javascript">
+    function recapSubmit(token) {
+        document.getElementById('login-form').submit();
+    }
+    function showPassword() {
+        let pass = document.getElementById('password');
+        if ( pass.type === "password" ) {
+            pass.type = "text";
+        }
+        else {
+            pass.type = "password";
+        }   
+    }
+</script>

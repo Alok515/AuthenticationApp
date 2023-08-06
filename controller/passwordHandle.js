@@ -66,6 +66,11 @@ const resetPass = async (req, res) => {
             req.flash('error', 'password mismatch');
             return res.redirect('back');
         }
+
+        if(req.body.password.length < 2) {
+            req.flash('error', 'password must be at least 2 characters');
+            return res.redirect('back');
+        }
         //findes the user from the userid in the url
         const user = await User.findById(req.params.userId);
         if (!user) {
@@ -108,13 +113,15 @@ const resetPass = async (req, res) => {
 const getPassHandler = (req, res) => {
     return res.render('../views/resetpassword.ejs', {
         title: 'Reset Password',
+        recapKey : process.env.recaptchaKey,
     });
 }
 
 //renders the forgot password page
 const forgetPassReset = (req, res) => {
     return res.render('../views/forgetpass.ejs', {
-        title: 'Forget Password Reset'
+        title: 'Forget Password Reset',
+        recapKey : process.env.recaptchaKey,
     });
 }
 module.exports = {

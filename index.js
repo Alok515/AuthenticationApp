@@ -63,6 +63,9 @@ app.use('/public', express.static(path.join(__dirname, 'public')));
 //extracting the style files in the layout file
 app.set('layout extractStyles', true);
 
+//extracting the script tags in the layout file
+app.set('layout extractScripts', true);
+
 //route setup for root route
 app.use('/', require('./router/index'));
 

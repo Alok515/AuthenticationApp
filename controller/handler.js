@@ -13,6 +13,7 @@ const home = (req, res) => {
 const loginGet = (req, res) => {
     res.render('../views/login.ejs', {
         title : 'Login',
+        recapKey : process.env.recaptchaKey,
     });
 }
 
@@ -20,6 +21,7 @@ const loginGet = (req, res) => {
 const registerGet = (req, res) => {
     res.render('../views/register.ejs', {
         title : 'Register',
+        recapKey : process.env.recaptchaKey,
     });
 }
 
