@@ -42,7 +42,7 @@ For Linux (Arch Linux Based Distros)
 ```
 Sudo pacman -S redis
 ```
-For Other OSes 
+For Other Operating Systems (Windows, Mac OS)
 [Visit here](https://redis.io/docs/getting-started/) For Redis Setup
 
 2. Install the dependencies:
@@ -62,7 +62,7 @@ DataBase = Your DataBase  connection Link.
 Session_Secret = Your Secret Session Key.
 HashNum = Your Hash Number For Hasing Password.
 client_id = Your Google Client ID.
-client_secret = Your Google Client Secret
+client_secret = Your Google Client Secret.
 email = Your Email Forwading Environment Variable.
 passEmail = Your Email Forwading Environment Passcode.
 ```
@@ -86,6 +86,7 @@ Follow the app's user interface to register, log in, and use different authentic
 - MongoDB
 - Passport.js (for authentication strategies)
 - bcrypt (for password hashing)
+- Redis (for parellal jobs)
 - Other relevant dependencies (listed in `package.json`)
 
 ## Contributing
