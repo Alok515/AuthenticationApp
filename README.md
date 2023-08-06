@@ -32,13 +32,18 @@ To run this application on your local machine, follow these steps:
 1. Clone the repository:
 
 ```
-git clone 
-cd 
+git clone https://github.com/Alok515/AuthenticationApp.git
+cd AuthenticationApp
 ```
+
+2. Redis Setup for Parallel Jobs
+
+For Linux (Arch Linux Based Distros)
 '''
-Redis Setup for Parallel Jobs
+Sudo pacman -S redis
+'''
+For Other OSes 
 [Visit here](https://redis.io/docs/getting-started/) For Redis Setup
-'''
 
 2. Install the dependencies:
 
