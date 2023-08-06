@@ -35,6 +35,10 @@ To run this application on your local machine, follow these steps:
 git clone 
 cd 
 ```
+'''
+Redis Setup for Parallel Jobs
+[Visit here](https://redis.io/docs/getting-started/) For Redis Setup
+'''
 
 2. Install the dependencies:
 
