@@ -39,9 +39,9 @@ cd AuthenticationApp
 2. Redis Setup for Parallel Jobs
 
 For Linux (Arch Linux Based Distros)
-'''
+```
 Sudo pacman -S redis
-'''
+```
 For Other OSes 
 [Visit here](https://redis.io/docs/getting-started/) For Redis Setup
 
