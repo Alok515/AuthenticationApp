@@ -3,7 +3,8 @@ const User = require('../models/user');
 const Token = require('../models/token');
 const { sendMailer } = require('../mailers/sendmail');
 const bcrypt = require('bcryptjs');
-
+const queue = require('../config/pallerkue');
+const emailWorker = require('../worker/workerkue');
 
 const setPass = async (req, res) => {
     try {
@@ -22,7 +23,18 @@ const setPass = async (req, res) => {
             }).save();
         }
         const link = `http://localhost:8000/users/password-reset/${user._id}/${token.token}`;
-        sendMailer(user.email, link);
+        //sendMailer(user.email, link);
+        const data1 = {
+            email: user.email,
+            link: link,
+        };
+        let job = queue.create('email', data1).save((err) => {
+            if (err) {
+                console.log('error in creating queue', err);
+                return;
+            }
+            console.log('process enqueue', job.id);
+        });
 
         req.flash('success_msg', 'Password link sent successfully');
         res.redirect('back');

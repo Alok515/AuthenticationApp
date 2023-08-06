@@ -1,8 +1,74 @@
-<div style="padding: 10px; margin: 0 auto; background-color: rgba(23,230,200,0.5);">
-  <div style="padding: 10px; margin: 0 auto;">
-    <h1> This is Reset Link</h1>
-    <h3 style="color:azure;">
-      <a href="<%= link %>" target="_blank" style="text-decoration: none;">Press here to reset password</a>
-    </h3>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Your Email Template</title>
+  <style>
+    body, p, h1, h2, h3, h4, h5, h6 {
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      line-height: 1.6;
+    }
+
+    .email-container {
+      max-width: 600px;
+      margin: 0 auto;
+      padding: 20px;
+      border: 1px solid #e0e0e0;
+      border-radius: 5px;
+      background-color: #f9f9f9;
+    }
+
+    h1 {
+      font-size: 24px;
+      margin-bottom: 20px;
+    }
+
+    p {
+      font-size: 16px;
+      margin-bottom: 10px;
+    }
+
+    a {
+      color: #007bff;
+      text-decoration: none;
+    }
+
+    /* Responsive styles for smaller screens */
+    @media screen and (max-width: 480px) {
+      .email-container {
+        padding: 10px;
+      }
+
+      h1 {
+        font-size: 20px;
+      }
+
+      p {
+        font-size: 14px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="email-container">
+    <h1>Welcome to Coder App!</h1>
+    <p>Forgot Password </p>
+    <p>
+      Stay tuned and don't hesitate to reach out if you have any questions. You can also visit our website for more information: <a href="http://localhost:8000">www.coder.com</a>.
+    </p>
+    <p>
+      Click here to reset your password <b><a href="<%= link %>">here</a></b>
+    </p>
+    <p>
+      Best regards,<br>
+      The coder Team
+    </p>
   </div>
-</div>
+</body>
+</html>
