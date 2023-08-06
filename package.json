@@ -1,13 +1,13 @@
 {
   "name": "authenticationapp",
   "version": "1.0.0",
-  "description": "",
+  "description": "## Table of Contents",
   "main": "index.js",
   "scripts": {
     "start": "node index.js",
     "dev": "nodemon index.js"
   },
-  "author": "",
+  "author": "Alok Kumar Singh",
   "license": "ISC",
   "dependencies": {
     "bcryptjs": "^2.4.3",
@@ -27,5 +27,13 @@
   },
   "devDependencies": {
     "dotenv": "^16.3.1"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Alok515/AuthenticationApp.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Alok515/AuthenticationApp/issues"
+  },
+  "homepage": "https://github.com/Alok515/AuthenticationApp#readme"
 }
