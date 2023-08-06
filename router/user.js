@@ -1,11 +1,11 @@
 
-const isAuth = require('../config/auth');
+const {isAuth, isNotAuth} = require('../config/auth');
 const { loginGet, registerGet, registerPost, logoutGet, getMail} = require('../controller/handler');
 const router = require('express').Router();
 const passport = require('passport');
 const { setPass, getPassHandler, resetPass, forgetPassReset } = require('../controller/passwordHandle');
 
-router.route('/login').get(loginGet).post( passport.authenticate('local', {
+router.route('/login').get(isNotAuth, loginGet).post( passport.authenticate('local', {
     successRedirect: '/profile',
     failureRedirect: '/users/login',
     failureFlash: true
@@ -16,7 +16,7 @@ router.route('/google/callback').get(passport.authenticate('google', {
     failureFlash : true,
     successRedirect : '/profile'
 }));
-router.route('/register').get(registerGet).post(registerPost);
+router.route('/register').get(isNotAuth, registerGet).post(registerPost);
 router.route('/logout').get(logoutGet);
 router.route('/forgetpass').get(forgetPassReset);
 router.route('/sendmail').get(isAuth, setPass).post( setPass);

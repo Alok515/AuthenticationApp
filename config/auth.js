@@ -1,5 +1,5 @@
 
-const isAuth = (req, res, next) => {
+module.exports.isAuth = (req, res, next) => {
     if(req.isAuthenticated()) {
         next();
     }
@@ -9,4 +9,12 @@ const isAuth = (req, res, next) => {
     }
 }
 
-module.exports = isAuth;
+module.exports.isNotAuth = (req, res, next) => {
+    if(!req.isAuthenticated()) {
+        next();
+    }
+    else {
+        req.flash('error_msg', 'Already Logged In');
+        return res.redirect('back');
+    }
+}
