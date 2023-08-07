@@ -23,7 +23,7 @@ This is a simple authentication app built with Node.js that demonstrates how to 
 - Password reset functionality
 - Securely hashed passwords using bcrypt
 - MongoDB database for data storage
-- Using redis for parallel jobs.
+- Using redis(Kue) for parallel jobs.
 - Using Recaptcha for verification of users.
 
 ## Installation
@@ -92,7 +92,7 @@ Follow the app's user interface to register, log in, and use different authentic
 - MongoDB
 - Passport.js (for authentication strategies)
 - bcrypt (for password hashing)
-- Redis (for parellal jobs)
+- Kue (for parellal jobs)
 - Other relevant dependencies (listed in `package.json`)
 
 ## Contributing
