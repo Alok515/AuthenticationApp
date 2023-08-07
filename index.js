@@ -2,7 +2,6 @@ const express = require('express');
 const app = express();
 require('dotenv').config();
 require('./config/initMongo');
-const redisSetup = require('./config/redis'); 
 const expressLayout = require('express-ejs-layouts');
 const path = require('path');
 const cookieParser = require('cookie-parser');
