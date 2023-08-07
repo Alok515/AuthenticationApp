@@ -24,6 +24,7 @@ This is a simple authentication app built with Node.js that demonstrates how to 
 - Securely hashed passwords using bcrypt
 - MongoDB database for data storage
 - Using redis for parallel jobs.
+- Using Recaptcha for verification of users.
 
 ## Installation
 
@@ -46,6 +47,8 @@ redis-server
 For Other Operating Systems (Windows, Mac OS)
 [Visit here](https://redis.io/docs/getting-started/) For Redis Setup
 
+or use Redis server from cloud services.
+
 2. Install the dependencies:
 
 ```
@@ -66,6 +69,8 @@ client_id = Your Google Client ID.
 client_secret = Your Google Client Secret.
 email = Your Email Forwading Environment Variable.
 passEmail = Your Email Forwading Environment Passcode.
+recaptchaKey =  Google recaptcha Key.
+REDIS_URL = Redis Server URL.
 ```
 
 4. Start the development server:
