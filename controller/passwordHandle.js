@@ -33,7 +33,7 @@ const setPass = async (req, res) => {
         }
 
         //creating a unique link with userId and token
-        const link = `http://localhost:8000/users/password-reset/${user._id}/${token.token}`;
+        const link = `${process.env.HOST}/users/password-reset/${user._id}/${token.token}`;
 
         //sendMailer(user.email, link);
         const data1 = {
