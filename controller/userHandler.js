@@ -4,6 +4,7 @@ const bcrypt = require('bcryptjs');
 const userResetPassword = (req, res) => {
     return res.render('../views/userresetPassword.ejs', {
         title: 'Reset Password',
+        name: req.user.name,
         recapKey: process.env.recaptchaKey,
     });
 }
@@ -48,4 +49,9 @@ const resetUserPassword = async (req, res) => {
         req.flash('error', "Could not reset password");
         console.log(error);
     }
+}
+
+module.exports = {
+    userResetPassword,
+    resetUserPassword
 }
