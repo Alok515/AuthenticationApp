@@ -74,8 +74,8 @@ const resetPass = async (req, res) => {
         //findes the user from the userid in the url
         const user = await User.findById(req.params.userId);
         if (!user) {
-            req.flash('error', 'invalid link or session expired please try again');
-            return res.redirect('/users/login');
+            req.flash('error', 'User Not Found With the provided Email Address please register'); 
+            return res.redirect('/users/register');
         }
 
         //findes the token from the token in the url and checks its validity
