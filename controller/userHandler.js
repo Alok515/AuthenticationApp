@@ -49,3 +49,8 @@ const resetUserPassword = async (req, res) => {
         console.log(error);
     }
 }
+
+module.exports = {
+    userResetPassword,
+    resetUserPassword
+}
