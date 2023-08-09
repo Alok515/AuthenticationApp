@@ -8,4 +8,7 @@ router.route('/').get(home);
 //route for profile page
 router.route('/profile').get(isAuth, profile);
 
+//route for user to change password
+router.route('/reset-password').get(isAuth, userResetPassword);
+
 module.exports = router;
