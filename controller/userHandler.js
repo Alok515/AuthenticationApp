@@ -26,14 +26,14 @@ const resetUserPassword = async (req, res) => {
         const userId = req.user.id;
         const user = await User.findById(userId);
         if(user) {
-            bcrypt.genSalt(process.env.HashNum)
+            bcrypt.genSalt(10)
                 .then(salt => {
                     bcrypt.hash(password, salt)
                         .then(hash => {
                             user.password = hash;
                             user.save();
-                            req.flash('success', 'Your password has been changed!');
-                            return res.redirect('back');
+                            req.flash('success_msg', 'Your password has been changed!');
+                            return res.redirect('/profile');
                         })
                         .catch(err => {
                             req.flash('error', "Failed To Hash The Password");
