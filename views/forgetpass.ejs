@@ -1,28 +1,41 @@
-
 <div class="row mt-5">
-    <div class="col-md-6 m-auto">
-        <div class="card card-body">
-            <h5 class="text-center mb-3">Enter your <b>Email Address</b> to send Password Reset Link</h5>
-            <form method="post" action="/users/sendmail" style="margin: 0 auto;" id="add-email">
-                <div class="form-group">
-                    <label for="email">Email</label>
-                    <input
-                        type="email"
-                        id="email"
-                        name="email"
-                        class="form-control mb-3"
-                        placeholder="email address"
-                        required
-                    />
-                </div>
-                <button type="submit" class="btn btn-primary mt-3 g-recaptcha form-control" data-sitekey="<%= recapKey %>" data-callback="emailSubmit">Submit</button>
-            </form>            
+  <div class="col-md-6 m-auto">
+    <div class="card card-body">
+      <h5 class="text-center mb-3">
+        Enter your <b>Email Address</b> to send Password Reset Link
+      </h5>
+      <form
+        method="post"
+        action="/users/sendmail"
+        style="margin: 0 auto"
+        id="add-email"
+      >
+        <div class="form-group">
+          <label for="email">Email</label>
+          <input
+            type="email"
+            id="email"
+            name="email"
+            class="form-control mb-3"
+            placeholder="email address"
+            required
+          />
         </div>
+        <button
+          type="submit"
+          class="btn btn-primary mt-3 g-recaptcha form-control"
+          data-sitekey="<%= recapKey %>"
+          data-callback="emailSubmit"
+        >
+          Submit
+        </button>
+      </form>
     </div>
+  </div>
 </div>
 
 <script type="text/javascript">
-    function emailSubmit(token) {
-            document.getElementById("add-email").submit();
-        }
+  function emailSubmit(token) {
+    document.getElementById("add-email").submit();
+  }
 </script>

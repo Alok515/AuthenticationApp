@@ -1,86 +1,99 @@
 <div class="row mt-5">
-    <div class="col-md-6 m-auto">
-        <div class="card card-body">
-            <h1 class="text-center mb-3">
-                <i class="fas fa-user-plus"></i> Register
-            </h1>
-        
-            <form action="/users/register" method="POST" id="register-form">
-                <div class="form-group">
-                    <label for="name">Name</label>
-                    <input
-                        type="name"
-                        id="name"
-                        name="name"
-                        class="form-control"
-                        placeholder="Enter Name"
-                        value="<%= typeof name != 'undefined' ? name : '' %>"
-                    />
-                </div>
-                <div class="form-group">
-                    <label for="email">Email</label>
-                    <input
-                        type="email"
-                        id="email"
-                        name="email"
-                        class="form-control"
-                        placeholder="Enter Email"
-                        value="<%= typeof email != 'undefined' ? email : '' %>"
-                    />
-                </div>
-                <div class="form-group">
-                    <label for="password">Password</label>
-                    <input
-                        type="password"
-                        id="password"
-                        name="password"
-                        class="form-control"
-                        placeholder="Create Password"
-                        value="<%= typeof password != 'undefined' ? password : '' %>"
-                    />
-                </div>
-                <div class="form-group">
-                    <label for="password2">Confirm Password</label>
-                    <input
-                        type="password"
-                        id="password2"
-                        name="password2"
-                        class="form-control"
-                        placeholder="Confirm Password"
-                        value="<%= typeof password2 != 'undefined' ? password2 : '' %>"
-                    />
-                </div>
-                <input type="checkbox" onclick="showPassword()" style="padding: 10px;">Show Password
-                <button type="submit" class="btn btn-primary btn-block mt-4 g-recaptcha form-control mb-5" data-sitekey="6Ld4roYnAAAAAHHMwvIQgsyNXp2LgWuXpwUy0f6I" data-callback="registerSubmit">
-                    Register
-                </button>
-            </form>
-            <div class="form-group">
-                <span class="lead" style="float: left">
-                    Login or Register with<a href="/users/google"><img src="../public/images/google.svg" alt="google" style="width:24px; height: 24px;"></a>
-                </span>
-                <span class="lead" style="float: right; ">
-                    Have Account? <a href="/users/login" style="text-decoration: none;">Login Here</a>
-                </span>
-            </div>
+  <div class="col-md-6 m-auto">
+    <div class="card card-body">
+      <h1 class="text-center mb-3">
+        <i class="fas fa-user-plus"></i> Register
+      </h1>
+
+      <form action="/users/register" method="POST" id="register-form">
+        <div class="form-group">
+          <label for="name">Name</label>
+          <input
+            type="name"
+            id="name"
+            name="name"
+            class="form-control"
+            placeholder="Enter Name"
+            value="<%= typeof name != 'undefined' ? name : '' %>"
+          />
         </div>
+        <div class="form-group">
+          <label for="email">Email</label>
+          <input
+            type="email"
+            id="email"
+            name="email"
+            class="form-control"
+            placeholder="Enter Email"
+            value="<%= typeof email != 'undefined' ? email : '' %>"
+          />
+        </div>
+        <div class="form-group">
+          <label for="password">Password</label>
+          <input
+            type="password"
+            id="password"
+            name="password"
+            class="form-control"
+            placeholder="Create Password"
+            value="<%= typeof password != 'undefined' ? password : '' %>"
+          />
+        </div>
+        <div class="form-group">
+          <label for="password2">Confirm Password</label>
+          <input
+            type="password"
+            id="password2"
+            name="password2"
+            class="form-control"
+            placeholder="Confirm Password"
+            value="<%= typeof password2 != 'undefined' ? password2 : '' %>"
+          />
+        </div>
+        <input
+          type="checkbox"
+          onclick="showPassword()"
+          style="padding: 10px"
+        />Show Password
+        <button
+          type="submit"
+          class="btn btn-primary btn-block mt-4 g-recaptcha form-control mb-5"
+          data-sitekey="6Ld4roYnAAAAAHHMwvIQgsyNXp2LgWuXpwUy0f6I"
+          data-callback="registerSubmit"
+        >
+          Register
+        </button>
+      </form>
+      <div class="form-group">
+        <span class="lead" style="float: left">
+          Login or Register with<a href="/users/google"
+            ><img
+              src="../public/images/google.svg"
+              alt="google"
+              style="width: 24px; height: 24px"
+          /></a>
+        </span>
+        <span class="lead" style="float: right">
+          Have Account?
+          <a href="/users/login" style="text-decoration: none">Login Here</a>
+        </span>
+      </div>
     </div>
+  </div>
 </div>
 <script type="text/javascript">
-    function registerSubmit(token) {
-        document.getElementById("register-form").submit();
+  function registerSubmit(token) {
+    document.getElementById("register-form").submit();
+  }
+  function showPassword() {
+    let pass1 = document.getElementById("password");
+    let pass2 = document.getElementById("password2");
+    if (pass1.type === "password" || pass2.type === "password") {
+      pass1.type = "text";
+      pass2.type = "text";
+    } else {
+      pass1.type = "password";
+      pass2.type = "password";
     }
-    function showPassword() {
-        let pass1 = document.getElementById("password");
-        let pass2 = document.getElementById("password2");
-        if (pass1.type === "password" || pass2.type === "password") {
-            pass1.type = "text";
-            pass2.type = "text";
-        }
-        else {
-            pass1.type = "password";
-            pass2.type = "password";
-        }
-
-    }
+  }
 </script>
