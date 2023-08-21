@@ -24,7 +24,7 @@ passport.use(new LocalStrategy(
                 bcrypt.compare(password, user.password, (err, result) => {
                     if(err) return done(err, false, {message: 'Some Internal Server Error occurred trying to login again'});
                     if(result){
-                        return done(null, user);
+                        return done(null, user, {success_msg: 'Login was Successful');
                     }
                     else return done(null, false, {message: 'Password is incorrect'});
                 })
